@@ -1,0 +1,10 @@
+let 
+val succ = fn n => fn f => fn x => n f (f x) 
+val zero = fn f => fn x => x
+val one = succ zero
+val plus = fn n => n succ
+val times = fn n => fn m => n (plus m) zero
+val power = fn n => fn m => 
+in
+    times one one
+end

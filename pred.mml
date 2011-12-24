@@ -1,0 +1,22 @@
+let 
+val true = fn t => fn e => t
+val false = fn t => fn e => e
+val succ = fn n => fn f => fn x => n f (f x) 
+val zero = fn f => fn x => x
+val one = succ zero
+val plus = fn n => n succ
+val iszero = fn n => n (fn x => false) true
+val two = succ one
+val three = succ two
+val four = succ three
+val times = fn n => fn m => n (plus m) zero
+val pair = fn f => fn s => fn e => e f s 
+val fst = fn p => p true
+val snd = fn p => p false
+val fib = fn n => fst (n (fn p => pair (snd p) (plus (fst p) (snd p))) (pair zero one))
+val fact = fn n => snd (n (fn p => pair (succ (fst p)) (times (fst p) (snd p))) (pair one one))
+val map = fn x => pair (snd x) (succ (snd x))
+val pred = fn n => fst (n map (pair zero zero))
+in
+	pred two
+end

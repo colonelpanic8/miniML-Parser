@@ -1,0 +1,11 @@
+let 
+val true = fn t => fn e => t
+val false = fn t => fn e => e
+val succ = fn n => fn f => fn x => n f (f x) 
+val zero = fn f => fn x => x
+val one = succ zero
+val plus = fn n => n succ
+val iszero = fn n => n (fn x => false) true
+in
+	iszero (succ one)
+end

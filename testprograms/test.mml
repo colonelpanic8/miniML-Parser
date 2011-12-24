@@ -1,0 +1,7 @@
+let
+val true = fn t => fn e => t
+val false = fn t => fn e => e
+val zero = fn f => fn x => x
+in
+	false false true a b
+end
